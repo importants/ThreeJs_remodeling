@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 120px;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    background: white;
+    box-shadow: 1px 1px 10px rgba(204, 204, 255, 0.5);
+    z-index: 100;
+
+    .icon {
+        width: 112px;
+        min-width: 112px;
+        height: 50px;
+        min-height: 50px;
+        overflow: hidden;
+        background: white;
+        font-size: 45px;
+        line-height: 50px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        cursor: pointer;
+
+    }
+
+    #capture {
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        min-height: 46px;
+        border-radius: 23px;
+        border: none;
+        background: url(./img/icon.png);
+        background-color: rgba(255, 255, 255, 0.8);
+        background-position: -63px 9px;
+        background-size: 400px 580px;
+        transition: 0.1s;
+        right: 100px;
+
+        &:hover {
+            background-color: rgba(194, 194, 194, 0.8);
+        }
+
+        &:active {
+            background-color: rgba(230, 230, 230, 0.8);
+        }
+
+
+    }
+}
+
+.main {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    flex-flow: row;
+
+    .containerBox {
+        display: flex;
+        width: 400px;
+        height: 100vh;
+        margin-top: 40px;
+        background: rgba(249, 249, 252, 1);
+        border-right: 1px solid rgba(227, 227, 255, 0.7);
+        box-shadow: 1px 1px 5px rgba(204, 204, 255, 0.7);
+        box-sizing: border-box;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+
+        .leftbox {
+            position: relative;
+            width: 64px;
+            background: rgba(22, 22, 32, 0.7);
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 50px;
+
+            button {
+                position: relative;
+                background: url(./img/icon.png);
+                border: none;
+                box-shadow: none;
+                width: 44px;
+                height: 44px;
+                margin-bottom: 20px;
+                overflow: hidden;
+                transition: background-color 0.1s;
+
+                &:hover {
+                    background-color: rgba(117, 117, 117, .8);
+                }
+            }
+
+            .B1 {
+                background-position: 4px -234px;
+
+                &:active {
+                    background-position: 4px -114px;
+                }
+            }
+
+            .B2 {
+                background-position: -531px -236px;
+
+                &:active {
+                    background-position: -531px -116px;
+                }
+            }
+
+            .B3 {
+                background-position: -272px -236px;
+
+                &:active {
+                    background-position: -272px -116px;
+                }
+            }
+
+            .B4 {
+                background-position: -136px -233px;
+
+                &:active {
+                    background-position: -136px -113px;
+                }
+            }
+        }
+
+        .rightbox {
+            display: flex;
+            width: 100%;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+
+            .choice_modelbox {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: 50px;
+                background: white;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: flex-start;
+                align-items: center;
+
+                .readMe {
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 100;
+                    text-align: center;
+                    box-sizing: border-box;
+                    padding: 70px 50px;
+                    line-height: 25px;
+
+                    p {
+                        font-size: 12px;
+                    }
+
+                    li {
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                        margin: 14px 0;
+                        text-align: start;
+                        font-size: 12px;
+                    }
+
+                    h4 {
+                        font-size: 14px;
+                    }
+
+                    input {
+                        border: 1px solid rgba(148, 148, 148, 0.5);
+                    }
+                }
+
+                .choice_model {
+                    width: 100%;
+                    height: 0;
+                    overflow: hidden;
+                    transition: height .5s;
+
+                    &.active {
+                        height: 900px;
+                    }
+
+                    .title {
+                        position: relative;
+                        width: 100%;
+                        height: 50px;
+                        overflow: hidden;
+                        line-height: 50px;
+                        background: white;
+                        box-sizing: border-box;
+                        padding-left: 40px;
+                        z-index: 120;
+                        font-size: 14px;
+                    }
+
+                    ul {
+                        position: relative;
+                        z-index: 120;
+                        width: 100%;
+                        display: flex;
+                        flex-flow: column nowrap;
+                        justify-content: flex-start;
+                        align-items: center;
+                        background: white;
+
+                        li {
+                            width: 60%;
+                            margin: 20px 0;
+                            height: 180px;
+                            background: rgba(208, 208, 233, 0.055);
+                            cursor: pointer;
+                            transition: 0.1s;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            &:hover {
+                                background: rgb(208, 208, 233);
+                            }
+
+                            &.disabled {
+                                background: rgb(188, 188, 218);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cancel {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 35px;
+
+    &.active {
+        display: block;
+    }
+}
+
+.checkbox {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 30px;
+    background-color: rgb(31, 31, 247);
+    background-position: -402px -202px;
+    box-shadow: 1px 1px 10px rgba(65, 105, 225, 0.651);
+    right: 100px;
+    bottom: 100px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .PandM {
+        position: relative;
+        width: 40px;
+        height: 4px;
+        background-color: white;
+        border-radius: 2.5px;
+
+        &::after {
+            position: absolute;
+            content: "";
+            width: 40px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+    }
+
+    &.hover {
+        background-color: rgb(12, 12, 94);
+    }
+
+    &.active {
+        .PandM {
+            &::after {
+                top: 0;
+                left: 0;
+                transform: ranslate(0, 0);
+                transform: rotate(90deg);
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.a {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 30px;
+    background: url(./img/icon.png);
+    background-color: rgb(31, 31, 247);
+    background-position: -402px -202px;
+    box-shadow: 1px 1px 10px rgba(65, 105, 225, 0.651);
+    right: 100px;
+    bottom: 100px;
+    z-index: 500;
+
+    .controlbox {
+        position: absolute;
+        top: 0;
+        left: -650px;
+        background: white;
+        box-shadow: 1px 1px 10px rgba(185, 185, 185, 0.315);
+        border-radius: 30px;
+        width: 600px;
+        height: 60px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-around;
+        overflow: hidden;
+        z-index: 100;
+        transition: .5s;
+
+        &.active {
+            width: 0;
+            left: 30px;
+        }
+
+        button {
+            width: 54px;
+            min-width: 54px;
+            height: 54px;
+            min-height: 54px;
+            border-radius: 27px;
+            border: 1px solid rgba(0, 0, 0, .1);
+            background: rgba(255, 255, 255, 0.4);
+            transition: 0.1s;
+            font-size: 12px;
+
+            &:hover {
+                background: rgba(22, 22, 32, 0.4);
+            }
+
+            &:active {
+                background: rgba(22, 22, 32, 0.7);
+            }
+        }
+    }
+}
+
+.loadingPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        rgb(204, 204, 255);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    opacity: 1;
+
+    &.remove {
+        opacity: 0;
+    }
+
+    &.active {
+        display: none;
+    }
+
+
+    button {
+        width: 100px;
+        height: 50px;
+        border: none;
+        background: rgb(255, 255, 255);
+        color: black;
+        box-shadow: 0px 1px 10px rgba(134, 134, 134, 0.048);
+
+        &:hover {
+            background: rgb(225, 225, 253);
+        }
+
+        &:active {
+            background: rgb(234, 234, 248);
+        }
+    }
+}
+
+
+.ThreeJs {
+    display: block;
+}

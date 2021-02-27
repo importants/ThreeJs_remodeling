@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewpitemOneort"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>three.js</title>
+    <link rel="stylesheet" href="./src/index.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="icon">LJH</div>
+      <!-- sreenshots 기능 -->
+      <button id="capture"></button>
+    </nav>
+    <div class="main">
+      <div class="containerBox">
+        <div class="leftbox">
+          <button class="B1"></button><button class="B2"></button
+          ><button class="B3"></button><button class="B4"></button>
+        </div>
+        <div class="rightbox">
+          <div class="choice_modelbox">
+            <div class="readMe">
+              <h1>hello?</h1>
+              <br />
+              <p>이 글은 설명서입니다. <br />자세히 읽어주세요. <br /><br /></p>
+              <hr />
+              <br />
+              <ul>
+                <li>- &nbsp;&nbsp;사물 선택시 두 번 클릭해주세요</li>
+                <li>- &nbsp;&nbsp;방향키로 화면 전환</li>
+                <li>- &nbsp;&nbsp;Q 왼쪽 회전 E 오른쪽 회전</li>
+                <li>- &nbsp;&nbsp;D 누를 시 사물 최근 순으로 삭제</li>
+                <li>- &nbsp;&nbsp;S 누를 시 선택한 사물 취소</li>
+                <li>- &nbsp;&nbsp;오른쪽 상단에 캡쳐 기능</li>
+                <li>
+                  - &nbsp;&nbsp;좌측 하단에 플러스 버튼에 화면<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;전환 버튼과 뒤로 돌아가기 버튼<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;바닥 그리드 버튼
+                </li>
+                <li>
+                  - &nbsp;&nbsp;로고를 클릭하시면 설명서를 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;다시 보실 수 있습니다
+                </li>
+              </ul>
+              <br />
+              <hr />
+              <br />
+              <br />
+              <h4>벽지 색상</h4>
+              <input
+                class="backColor"
+                value="rgb(236, 230, 236)"
+                data-jscolor="{}"
+              />
+            </div>
+            <div class="choice_model_desk choice_model">
+              <div class="title"><h3>DESK</h3></div>
+              <ul class="desks">
+                <li class="desk1">
+                  <img src="./src/img/desk1.png" alt="desk1" />
+                </li>
+                <li class="desk2">
+                  <img src="./src/img/desk2.png" alt="desk2" />
+                </li>
+                <li class="desk3">
+                  <img src="./src/img/desk3.png" alt="desk3" />
+                </li>
+              </ul>
+            </div>
+            <div class="choice_model_window choice_model">
+              <div class="title"><h3>WINDOW</h3></div>
+              <ul class="windows">
+                <li class="window1">
+                  <img src="./src/img/window1.png" alt="window1" />
+                </li>
+                <li class="window2">
+                  <img src="./src/img/window2.png" alt="window2" />
+                </li>
+                <li class="window3">
+                  <img src="./src/img/window3.png" alt="window3" />
+                </li>
+              </ul>
+            </div>
+            <div class="choice_model_chair choice_model">
+              <div class="title"><h3>CHAIR</h3></div>
+              <ul class="chairs">
+                <li class="chair1">
+                  <img src="./src/img/chair1.png" alt="chair1" />
+                </li>
+                <li class="chair2">
+                  <img src="./src/img/chair2.png" alt="chair2" />
+                </li>
+                <li class="chair3">
+                  <img src="./src/img/chair3.png" alt="chair3" />
+                </li>
+              </ul>
+            </div>
+            <div class="choice_model_picture choice_model">
+              <div class="title"><h3>PICTURE</h3></div>
+              <ul class="pictures">
+                <li class="picture1">
+                  <img src="./src/img/picture1.png" alt="picture1" />
+                </li>
+                <li class="picture2">
+                  <img src="./src/img/picture2.png" alt="picture2" />
+                </li>
+                <li class="picture3">
+                  <img src="./src/img/picture3.png" alt="picture3" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="canvasdiv">
+        <canvas class="ThreeJs" id="ThreeJs"></canvas>
+      </div>
+    </div>
+    <button class="cancel">cancel</button>
+    <div class="checkbox active"><div class="PandM"></div></div>
+    <div class="a">
+      <div class="controlbox active">
+        <button class="Front">front</button>
+        <button class="Left">left</button>
+        <button class="Right">Right</button>
+        <button class="Sky">sky</button>
+        <button class="Back">back</button>
+        <button class="Grid">grid</button>
+      </div>
+    </div>
+    <!-- <div class="loadingPage">
+      <button class="closeLoadingPage" disabled="disabled">close</button>
+    </div>-->
+
+    <script type="module" src="./src/three_project.module.js"></script>
+    <!-- sreenshots 기능 -->
+    <script type="module" src="./src/screenshots.module.js"></script>
+    <!-- 창 열기 & 닫기 기능 -->
+    <script type="text/javascript" src="./src/opencontents.js"></script>
+    <!-- color picker -->
+    <script src="./node_modules/jscolor/jscolor.js"></script>
+    <script>
+      // Here we can adjust defaults for all color pickers on page:
+      jscolor.presets.default = {
+        palette: [
+          "#000000",
+          "#7d7d7d",
+          "#870014",
+          "#ec1c23",
+          "#ff7e26",
+          "#fef100",
+          "#22b14b",
+          "#00a1e7",
+          "#3f47cc",
+          "#a349a4",
+          "#ffffff",
+          "#c3c3c3",
+          "#b87957",
+          "#feaec9",
+          "#ffc80d",
+          "#eee3af",
+          "#b5e61d",
+          "#99d9ea",
+          "#7092be",
+          "#c8bfe7",
+        ],
+        //paletteCols: 12,
+        //hideOnPaletteClick: true,
+        //width: 271,
+        //height: 151,
+        //position: 'right',
+        //previewPosition: 'right',
+        //backgroundColor: 'rgba(51,51,51,1)', controlBorderColor: 'rgba(153,153,153,1)', buttonColor: 'rgba(240,240,240,1)',
+      };
+    </script>
+  </body>
+</html>
