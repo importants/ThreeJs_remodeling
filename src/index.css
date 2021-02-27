@@ -83,15 +83,18 @@ nav #capture:active {
   height: 100vh;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .main .containerBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 400px;
+  width: 23%;
   height: 100vh;
   margin-top: 40px;
   background: #f9f9fc;
@@ -107,6 +110,7 @@ nav #capture:active {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  z-index: 111;
 }
 
 .main .containerBox .leftbox {
@@ -300,8 +304,9 @@ nav #capture:active {
 }
 
 .main .containerBox .rightbox .choice_modelbox .choice_model ul li {
+  position: relative;
   width: 60%;
-  margin: 20px 0;
+  margin: 30px 0;
   height: 180px;
   background: rgba(208, 208, 233, 0.055);
   cursor: pointer;
@@ -314,12 +319,67 @@ nav #capture:active {
   height: 100%;
 }
 
-.main .containerBox .rightbox .choice_modelbox .choice_model ul li:hover {
-  background: #d0d0e9;
+.main .containerBox .rightbox .choice_modelbox .choice_model ul li .blurbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  background: rgba(208, 208, 233, 0.87);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.main .containerBox .rightbox .choice_modelbox .choice_model ul li .blurbox p {
+  font-size: 12px;
+  left: 5px;
+  bottom: -15px;
+  font-weight: 600;
+}
+
+.main .containerBox .rightbox .choice_modelbox .choice_model ul li .blurbox p span {
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.main .containerBox .rightbox .choice_modelbox .choice_model ul li:hover .blurbox {
+  opacity: 1;
 }
 
 .main .containerBox .rightbox .choice_modelbox .choice_model ul li.disabled {
   background: #bcbcda;
+}
+
+.main .canvasdiv {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 77%;
+  height: 100%;
+  z-index: 110;
+}
+
+.main .canvasdiv .ThreeJs {
+  display: block;
 }
 
 .cancel {
@@ -484,9 +544,13 @@ nav #capture:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -519,9 +583,5 @@ nav #capture:active {
 
 .loadingPage button:active {
   background: #eaeaf8;
-}
-
-.ThreeJs {
-  display: block;
 }
 /*# sourceMappingURL=index.css.map */

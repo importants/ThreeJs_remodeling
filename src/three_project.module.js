@@ -13,6 +13,7 @@ let Right = document.getElementsByClassName("Right")[0];
 let Sky = document.getElementsByClassName("Sky")[0];
 let Back = document.getElementsByClassName("Back")[0];
 let Grid = document.getElementsByClassName("Grid")[0];
+let canvasdiv = document.getElementsByClassName("canvasdiv")[0];
 let threeJs = document.getElementById("ThreeJs");
 let Value = document.getElementsByClassName("backColor")[0];
 let cancel = document.getElementsByClassName("cancel")[0];
@@ -27,7 +28,8 @@ const left = new THREE.Euler(
   -3.141592653589793,
   "XYZ"
 );
-const closeLoadingPage = document.getElementsByClassName("closeLoadingPage")[0];
+
+let sizes = { width: canvasdiv.clientWidth, height: canvasdiv.clientHeight };
 let camera, scene, renderer;
 let mouse,
   raycaster,
@@ -55,12 +57,10 @@ let chair2s = [];
 let chair3s = [];
 
 init();
-//loadingobject();
-
 function init() {
   camera = new THREE.PerspectiveCamera(
     45,
-    window.innerWidth / window.innerHeight,
+    sizes.width / sizes.height,
     1,
     10000
   );
@@ -91,12 +91,12 @@ function init() {
   scene.add(gridHelper);
 
   // lights
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); //자연광
-  ambientLight.intensity = 1.34;
+  const ambientLight = new THREE.AmbientLight(0xffffff); //자연광
+  ambientLight.intensity = 1.0;
   scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff);
-  directionalLight.position.set(0, 1000, 0).normalize();
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  directionalLight.position.set(0, 500, 0).normalize();
   scene.add(directionalLight);
 
   renderer = new THREE.WebGLRenderer({
@@ -104,8 +104,11 @@ function init() {
     canvas: threeJs,
   });
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  renderer.setSize(
+    sizes.width,
+    sizes.height /*window.innerWidth, window.innerHeight*/
+  );
+  canvasdiv.appendChild(renderer.domElement);
 
   // drag drop
 
@@ -605,16 +608,26 @@ function wallMake() {
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = sizes.width / sizes.height; //window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(
+    sizes.width,
+    sizes.height /*window.innerWidth, window.innerHeight*/
+  );
 }
 
 function onDocumentMouseMove(event) {
   event.preventDefault();
+  var gap1 = event.clientY - event.offsetY;
+  var gap2 = event.clientX - event.offsetX;
   mouse.set(
-    (event.clientX / window.innerWidth) * 2 - 1,
-    -(event.clientY / window.innerHeight) * 2 + 1
+    ((event.clientX - gap2) / sizes.width) /*window.innerWidth*/ * 2 - 1,
+    -(
+      ((event.clientY - gap1) / sizes.height)
+      /*window.innerHeight*/
+    ) *
+      2 +
+      1
   );
 
   raycaster.setFromCamera(mouse, camera);
@@ -699,7 +712,7 @@ function onDocumentMouseMove(event) {
               .floor()
               .multiplyScalar(50)
               .addScalar(25);
-            itemOne.position.y = 150;
+            itemOne.position.y = 200;
             scene.add(itemOne);
           }
           break;
@@ -713,7 +726,7 @@ function onDocumentMouseMove(event) {
               .floor()
               .multiplyScalar(50)
               .addScalar(25);
-            itemOne.position.y = 150;
+            itemOne.position.y = 200;
             scene.add(itemOne);
           }
           break;
@@ -727,7 +740,7 @@ function onDocumentMouseMove(event) {
               .floor()
               .multiplyScalar(50)
               .addScalar(25);
-            itemOne.position.y = 150;
+            itemOne.position.y = 200;
             scene.add(itemOne);
           }
           break;
@@ -750,9 +763,16 @@ function onDocumentMouseMove(event) {
 function onDocumentMouseDown(event) {
   event.preventDefault();
 
+  var gap1 = event.clientY - event.offsetY;
+  var gap2 = event.clientX - event.offsetX;
   mouse.set(
-    (event.clientX / window.innerWidth) * 2 - 1,
-    -(event.clientY / window.innerHeight) * 2 + 1
+    ((event.clientX - gap2) / sizes.width) /*window.innerWidth*/ * 2 - 1,
+    -(
+      ((event.clientY - gap1) / sizes.height)
+      /*window.innerHeight*/
+    ) *
+      2 +
+      1
   );
   raycaster.setFromCamera(mouse, camera);
 
@@ -826,9 +846,8 @@ function onDocumentKeyDown(event) {
       changeR = true;
       break;
     case 69: // e 오른쪽으로 회전
-      if (rotationNum != 1) {
-        rotationNum = 1;
-      }
+      if (rotationNum != 1) rotationNum = 1;
+
       rotationNum++;
       console.log(rotationNum);
       changeR = true;
@@ -888,6 +907,7 @@ function onDocumentKeyUp(event) {
   switch (event.keyCode) {
     case 65:
       console.log(save_object);
+      console.log(objects);
       break;
   }
 }
@@ -979,14 +999,6 @@ function removed() {
     chairs.childNodes[i].classList.remove("disabled");
   }
 }
-
-closeLoadingPage.addEventListener(
-  "click",
-  function () {
-    console.log(scene);
-  },
-  false
-);
 
 function render() {
   renderer.render(scene, camera);

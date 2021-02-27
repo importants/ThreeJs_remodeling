@@ -115,16 +115,16 @@ checkbox.addEventListener(
   false
 );
 
-setTimeout(function () {
-  closeLoadingPage.disabled = false;
-  closeLoadingPage.addEventListener(
-    "click",
-    function () {
-      loadingPage.classList.add("remove");
-      setTimeout(function () {
-        loadingPage.classList.add("active");
-      }, 1000);
-    },
-    false
-  );
-}, 1000);
+// setTimeout(function () {
+//   closeLoadingPage.disabled = false;
+//   closeLoadingPage.addEventListener(
+//     "click",
+//     function () {
+//       loadingPage.classList.add("remove");
+//       setTimeout(function () {
+//         loadingPage.classList.add("active");
+//       }, 1000);
+//     },
+//     false
+//   );
+// }, 1000);
